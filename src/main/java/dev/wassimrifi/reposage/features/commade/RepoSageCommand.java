@@ -23,6 +23,13 @@ public class RepoSageCommand implements Runnable {
     )
     private boolean version;
 
+    @Option(
+            names = {"-h" , "--help"},
+            help = true,
+            description = "Affiche l'aide."
+    )
+    private boolean help;
+
     @Override
     public void run() {
         spec.commandLine().usage(System.out);
