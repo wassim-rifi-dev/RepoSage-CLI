@@ -12,7 +12,19 @@ import picocli.CommandLine.*;
         description = "Analyse intelligente de dépôts GitHub."
 )
 public class RepoSageCommand implements Runnable {
+
+    @Spec
+    private Model.CommandSpec spec;
+
+    @Option(
+            names = {"-v", "--version"},
+            versionHelp = true,
+            description = "Afficher la version."
+    )
+    private boolean version;
+
     @Override
     public void run() {
+        spec.commandLine().usage(System.out);
     }
 }
