@@ -4,6 +4,13 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 
 @Component
-@Command
-public class ReposageUpdateCommande {
+@Command(
+    name = "update",
+    description = "Met à jour RepoSage."
+)
+public class ReposageUpdateCommande implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Mise a jour...");
+    }
 }
