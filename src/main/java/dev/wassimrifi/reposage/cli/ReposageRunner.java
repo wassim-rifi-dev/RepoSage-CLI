@@ -8,9 +8,9 @@ import picocli.CommandLine;
 @Component
 public class ReposageRunner implements CommandLineRunner {
     private final RepoSageCommand repoSageCommand;
-    private final PicocliSpringFactory factory;
+    private final ReposageSpringFactory factory;
 
-    public ReposageRunner(RepoSageCommand repoSageCommand, PicocliSpringFactory factory) {
+    public ReposageRunner(RepoSageCommand repoSageCommand, ReposageSpringFactory factory) {
         this.repoSageCommand = repoSageCommand;
         this.factory = factory;
     }
