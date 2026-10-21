@@ -9,7 +9,7 @@ import picocli.CommandLine.*;
         name = "resposage",
         mixinStandardHelpOptions = true,
         versionProvider = ReposageVersionProvider.class,
-        description = "Analyse intelligente de dépôts GitHub.",
+        description = "Analyse intelligente des repots GitHub.",
         subcommands = {
                 ReposageUpdateCommande.class
         }
