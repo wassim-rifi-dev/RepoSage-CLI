@@ -47,6 +47,12 @@
 			<artifactId>picocli-spring-boot-starter</artifactId>
 			<version>4.7.7</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-json</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
