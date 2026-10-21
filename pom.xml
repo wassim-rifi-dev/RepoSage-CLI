@@ -78,6 +78,10 @@
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
+
+				<configuration>
+					<imageName>reposage</imageName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

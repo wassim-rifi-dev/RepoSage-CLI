@@ -1,3 +1,11 @@
 spring:
   application:
     name: reposage
+
+  main:
+    banner-mode: "off"
+    log-startup-info: false
+
+logging:
+  level:
+    root: WARN
