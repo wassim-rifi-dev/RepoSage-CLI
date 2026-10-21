@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @Component
-public class PicocliRunner implements CommandLineRunner {
+public class ReposageRunner implements CommandLineRunner {
     private final RepoSageCommand repoSageCommand;
     private final PicocliSpringFactory factory;
 
-    public PicocliRunner(RepoSageCommand repoSageCommand, PicocliSpringFactory factory) {
+    public ReposageRunner(RepoSageCommand repoSageCommand, PicocliSpringFactory factory) {
         this.repoSageCommand = repoSageCommand;
         this.factory = factory;
     }
