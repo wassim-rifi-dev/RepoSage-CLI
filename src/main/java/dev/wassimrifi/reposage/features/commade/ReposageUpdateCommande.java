@@ -7,6 +7,13 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import picocli.CommandLine.*;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 @Component
 @Command(
     name = "update",
@@ -37,13 +44,39 @@ public class ReposageUpdateCommande implements Runnable {
             System.out.println("Version installée : " + currentVersion);
             System.out.println("Dernière version  : " + latestVersion);
 
-            if (!check) {
-                gitHubReleaseService.getDownloadUrl();
-                System.out.println("Mise à jour pas encore disponible. Utilisez : reposage update --check");
+            if (isUpToDate(latestVersion)) {
+                System.out.println("RepoSage CLI est à jour.");
                 return;
             }
 
-            printIsUpdated(latestVersion);
+            System.out.println("Une nouvelle version est disponible !");
+
+            if (!check) {
+                System.out.println("Lancez 'reposage update' pour l'installer.");
+
+                String downloadUrl = gitHubReleaseService.getDownloadUrl();
+
+                Path installer = Files.createTempFile("reposage-setup-", ".exe");
+
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(downloadUrl))
+                        .GET()
+                        .build();
+
+                HttpResponse<Path> response = HttpClient.newHttpClient()
+                        .send(request, HttpResponse.BodyHandlers.ofFile(installer));
+
+                new ProcessBuilder(
+                    installer.toAbsolutePath().toString(),
+                    "/VERYSILENT",
+                    "/SUPPRESSMSGBOXES",
+                    "/NORESTART",
+                    "/SP-"
+                ).start().waitFor();
+
+                System.out.println("Le program est mis a jour en success.");
+                return;
+            }
 
         } catch (HttpClientErrorException.NotFound e) {
             System.out.println("Aucune release publiée trouvée sur GitHub.");
@@ -56,11 +89,7 @@ public class ReposageUpdateCommande implements Runnable {
         }
     }
 
-    private void printIsUpdated(String latestVersion) {
-        if (latestVersion.equals(currentVersion)) {
-            System.out.println("RepoSage CLI est à jour.");
-        } else {
-            System.out.println("Une nouvelle version est disponible !");
-        }
+    private boolean isUpToDate(String latestVersion) {
+        return latestVersion.equals(currentVersion);
     }
 }
