@@ -38,24 +38,32 @@ public class GitHubReleaseService {
 
         return latestVersion;
     }
-    
-    public void getDownloadUrl() {
+
+    public String getDownloadUrl() {
         String response = getGithubReleaseResponse();
 
         JsonNode json = objectMapper.readTree(response);
 
         JsonNode assets = json.get("assets");
 
+        String downloadUrl = null;
+
         for (JsonNode asset : assets) {
             String name = asset.get("name").asString();
 
             if (name.endsWith(".exe")) {
-                String downloadUrl = asset.get("browser_download_url").asString();
+                downloadUrl = asset.get("browser_download_url").asString();
 
                 System.out.println(downloadUrl);
                 break;
             }
         }
+
+        if (downloadUrl == null) {
+            throw new IllegalStateException("Installer introuvable");
+        }
+
+        return downloadUrl;
     }
 
     private String getGithubReleaseResponse() {
