@@ -9,8 +9,8 @@ import org.springframework.web.client.RestClient;
 public class GitHubClientConfig {
 
     @Bean
-    public RestClient gitHubRestClient(RestClient.Builder builder) {
-        return builder
+    public RestClient gitHubRestClient() {
+        return RestClient.builder()
             .baseUrl("https://api.github.com/repos")
             .defaultHeader(HttpHeaders.ACCEPT, "application/vnd.github+json")
             .build();
