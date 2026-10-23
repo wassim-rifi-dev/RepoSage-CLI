@@ -38,6 +38,7 @@ public class ReposageUpdateCommande implements Runnable {
             System.out.println("Dernière version  : " + latestVersion);
 
             if (!check) {
+                gitHubReleaseService.getDownloadUrl();
                 System.out.println("Mise à jour pas encore disponible. Utilisez : reposage update --check");
                 return;
             }

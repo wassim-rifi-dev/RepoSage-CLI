@@ -38,6 +38,25 @@ public class GitHubReleaseService {
 
         return latestVersion;
     }
+    
+    public void getDownloadUrl() {
+        String response = getGithubReleaseResponse();
+
+        JsonNode json = objectMapper.readTree(response);
+
+        JsonNode assets = json.get("assets");
+
+        for (JsonNode asset : assets) {
+            String name = asset.get("name").asString();
+
+            if (name.endsWith(".exe")) {
+                String downloadUrl = asset.get("browser_download_url").asString();
+
+                System.out.println(downloadUrl);
+                break;
+            }
+        }
+    }
 
     private String getGithubReleaseResponse() {
         return restClient.get()
