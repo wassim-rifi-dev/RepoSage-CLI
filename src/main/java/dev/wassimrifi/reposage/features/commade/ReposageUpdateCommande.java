@@ -17,6 +17,7 @@ import java.nio.file.Path;
 @Component
 @Command(
     name = "update",
+    mixinStandardHelpOptions = true,
     description = "Mise a jour RepoSage."
 )
 public class ReposageUpdateCommande implements Runnable {
@@ -41,11 +42,11 @@ public class ReposageUpdateCommande implements Runnable {
         try {
             String latestVersion = gitHubReleaseService.getLatestRelease();
 
-            System.out.println("Version installée : " + currentVersion);
-            System.out.println("Dernière version  : " + latestVersion);
+            System.out.println("Version installee : " + currentVersion);
+            System.out.println("Derniere version  : " + latestVersion);
 
             if (isUpToDate(latestVersion)) {
-                System.out.println("RepoSage CLI est à jour.");
+                System.out.println("RepoSage CLI est a jour.");
                 return;
             }
 
@@ -79,13 +80,13 @@ public class ReposageUpdateCommande implements Runnable {
             }
 
         } catch (HttpClientErrorException.NotFound e) {
-            System.out.println("Aucune release publiée trouvée sur GitHub.");
+            System.out.println("Aucune release publiee trouvee sur GitHub.");
         } catch (HttpClientErrorException.Forbidden | HttpClientErrorException.TooManyRequests e) {
-            System.out.println("Limite de requêtes GitHub atteinte. Réessayez plus tard.");
+            System.out.println("Limite de requetes GitHub atteinte. Reessayez plus tard.");
         } catch (ResourceAccessException e) {
-            System.out.println("Erreur réseau : impossible de joindre GitHub.");
+            System.out.println("Erreur reseau : impossible de joindre GitHub.");
         } catch (Exception e) {
-            System.out.println("Erreur : impossible de vérifier les mises à jour (" + e.getMessage() + ").");
+            System.out.println("Erreur : impossible de verifier les mises a jour (" + e.getMessage() + ").");
         }
     }
 
