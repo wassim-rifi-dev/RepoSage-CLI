@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ReposageApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReposageApplication.class, args);
+		System.exit(
+				SpringApplication.exit(
+						SpringApplication.run(ReposageApplication.class, args)
+				)
+		);
 	}
 
 }
