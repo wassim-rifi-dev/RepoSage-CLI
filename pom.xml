@@ -12,7 +12,7 @@
 
 	<groupId>dev.wassimrifi</groupId>
 	<artifactId>reposage</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 
 	<name>RepoSage CLI</name>
 
@@ -46,6 +46,17 @@
 			<groupId>info.picocli</groupId>
 			<artifactId>picocli-spring-boot-starter</artifactId>
 			<version>4.7.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

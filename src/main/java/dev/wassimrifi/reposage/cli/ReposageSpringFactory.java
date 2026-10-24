@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @Component
-public class PicocliSpringFactory implements CommandLine.IFactory {
+public class ReposageSpringFactory implements CommandLine.IFactory {
     private final ApplicationContext context;
 
-    public PicocliSpringFactory(ApplicationContext context) {
+    public ReposageSpringFactory(ApplicationContext context) {
         this.context = context;
     }
 

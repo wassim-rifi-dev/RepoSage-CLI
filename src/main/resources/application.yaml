@@ -1,9 +1,13 @@
 spring:
   application:
     name: reposage
+    version: "@project.version@"
+    owner: "wassim-rifi-dev"
+    repo: "RepoSage-CLI"
 
   main:
     banner-mode: "off"
+    web-application-type: "none"
     log-startup-info: false
 
 logging:
