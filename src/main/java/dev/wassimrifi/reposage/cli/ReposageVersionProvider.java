@@ -14,6 +14,6 @@ public class ReposageVersionProvider implements IVersionProvider {
 
     @Override
     public String[] getVersion() {
-        return new String[] { "Resposage CLI " + version };
+        return new String[] { "Reposage CLI " + version };
     }
 }

@@ -1,6 +1,6 @@
 package dev.wassimrifi.reposage.cli;
 
-import dev.wassimrifi.reposage.features.commade.RepoSageCommand;
+import dev.wassimrifi.reposage.features.command.RepoSageCommand;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine;

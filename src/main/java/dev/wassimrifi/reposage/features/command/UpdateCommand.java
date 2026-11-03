@@ -1,4 +1,4 @@
-package dev.wassimrifi.reposage.features.commade;
+package dev.wassimrifi.reposage.features.command;
 
 import dev.wassimrifi.reposage.features.github.GitHubReleaseService;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,13 +20,13 @@ import java.nio.file.Path;
     mixinStandardHelpOptions = true,
     description = "Mise a jour RepoSage."
 )
-public class ReposageUpdateCommande implements Runnable {
+public class UpdateCommand implements Runnable {
     private static final String REPO = "wassim-rifi-dev/RepoSage-CLI";
 
     private final String currentVersion;
     private final GitHubReleaseService gitHubReleaseService;
 
-    public ReposageUpdateCommande(@Value("${spring.application.version}") String currentVersion, GitHubReleaseService gitHubReleaseService) {
+    public UpdateCommand(@Value("${spring.application.version}") String currentVersion, GitHubReleaseService gitHubReleaseService) {
         this.currentVersion = currentVersion;
         this.gitHubReleaseService = gitHubReleaseService;
     }

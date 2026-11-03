@@ -1,4 +1,4 @@
-package dev.wassimrifi.reposage.features.commade;
+package dev.wassimrifi.reposage.features.command;
 
 import dev.wassimrifi.reposage.cli.ReposageVersionProvider;
 import org.springframework.stereotype.Component;
@@ -6,12 +6,12 @@ import picocli.CommandLine.*;
 
 @Component
 @Command(
-        name = "resposage",
+        name = "reposage",
         mixinStandardHelpOptions = true,
         versionProvider = ReposageVersionProvider.class,
-        description = "Analyse intelligente des repots GitHub.",
+        description = "Analyse intelligente des repos GitHub.",
         subcommands = {
-                ReposageUpdateCommande.class
+                UpdateCommand.class
         }
 )
 public class RepoSageCommand implements Runnable {
